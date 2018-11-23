@@ -1,0 +1,10 @@
+{
+	"name": "kex-tiled-io",
+	"url": "https://github.com/sh-dave/kex-tiled-io",
+	"classPath": "src",
+	"dependencies": {
+		"kex-io": "",
+		"haxe-format-tiled": ""
+	},
+	"license": "zlib"
+}
