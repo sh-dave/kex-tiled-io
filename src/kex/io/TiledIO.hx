@@ -21,10 +21,10 @@ class TiledIO {
 		var cached = cachedAssets.get(url);
 		var f = Future.trigger();
 
-		asset_info('queue map `$url` for scope `$scope`');
+		asset_info('queue tmx `$url` for scope `$scope`');
 
 		if (cached != null) {
-			asset_info('already cached map `$url`, adding scope `$scope`');
+			asset_info('already cached tmx `$url`, adding scope `$scope`');
 			f.trigger(Success(cached));
 			return f;
 		}
@@ -32,12 +32,12 @@ class TiledIO {
 		var loading = loadingAssets.get(url);
 
 		if (loading != null) {
-			asset_info('already loading map `$url`, adding scope `$scope`');
+			asset_info('already loading tmx `$url`, adding scope `$scope`');
 			loading.push(f);
 			return f;
 		}
 
-		asset_info('loading map `$url` for scope `$scope`');
+		asset_info('loading tmx `$url` for scope `$scope`');
 		loadingAssets.set(url, [f]);
 
 		return blobs.get(scope, path, file)
@@ -82,11 +82,11 @@ class TiledIO {
 	function unload( scope: String, url: String ) {
 		var scopes = urlToScope.get(url);
 
-		asset_info('unscoping map `$url` for `$scope`');
+		asset_info('unscoping tmx `$url` for `$scope`');
 		scopes.remove(scope);
 
 		if (scopes.length == 0) {
-			asset_info('unloading map `$url`');
+			asset_info('unloading tmx `$url`');
 			cachedAssets.remove(url);
 			blobs.unloadBlob(scope, url);
 		}
